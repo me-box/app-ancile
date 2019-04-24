@@ -204,17 +204,18 @@ function refresh_data() {
       };
 
       // make the request
-      request.post('http://127.0.0.1:5000/api/run', {
+      request({
+        url: 'http://127.0.0.1:5000/api/run',
+        method: 'POST',
         json: data,
-      }, (error, res, body) => {
-        if (error) {
-          console.error(error);
+      }, (err, res, body) => {
+        if (err) {
+          console.error(err);
           return;
         }
         console.log(`statusCode: ${res.statusCode}`);
         console.log(body);
       });
-
     });
 }
 
