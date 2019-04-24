@@ -57,7 +57,7 @@ app.get('/ui/saveConfiguration', (req, res) => {
           res.type('html');
           res.send(`
             <h1>Ancile Driver Configuration</h1>
-            <p>Token has been successfully saved.</p>
+            <p>Configuration has been successfully saved.</p>
           `);
           res.end();
         });
