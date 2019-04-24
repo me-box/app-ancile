@@ -1,0 +1,37 @@
+{
+	"manifest-version": 1,
+	"name": "driver-ancile",
+	"version": "0.0.1",
+	"description": "A Databox driver to support Cornell Tech's Ancile Project",
+	"author": "Kleomenis Katevas <k.katevas@imperial.ac.uk> ()",
+	"license": "MIT",
+	"databox-type": "driver",
+	"tags": [
+		"store",
+		"blob",
+		"db",
+		"native",
+		"json",
+		"timeseries"
+	],
+	"homepage": "https://github.com/minoskt/driver-ancile",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/minoskt/driver-ancile.git"
+	},
+	"external-whitelist": [
+		{
+			"urls": [
+				"http://127.0.0.1:5000"
+			],
+			"description": "Access Ancile local server"
+		}
+	],
+	"resource-requirements": {
+		"store": "core-store"
+	},
+	"provides": [
+		{
+		}
+	]
+}
