@@ -38,8 +38,8 @@ app.get('/ui', function (req, res) {
       res.send(`
         <h1>Ancile Driver Configuration</h1>
         <form action="/driver-ancile/ui/saveConfiguration" >
-            Ancile Server: <input type="text" name="server" value="${server}" />
-            Ancile Token: <input type="text" name="token" value="${token}" />
+            Ancile Server: <input type="text" name="server" value="${server}" /><br />
+            Ancile Token: <input type="text" name="token" value="${token}" /><br />
             <br />
             <button>Save Configuration</button>
         </form>
