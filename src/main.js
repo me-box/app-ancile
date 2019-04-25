@@ -51,7 +51,7 @@ app.get('/ui', function (req, res) {
 
 app.get('/ui/saveConfiguration', (req, res) => {
   getSettings()
-    .then(async (settings) => {
+    .then((settings) => {
       const { server, token } = req.query;
       settings.server = server;
       settings.token = token;
