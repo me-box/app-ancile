@@ -161,10 +161,15 @@ function timer_callback() {
 
   getSettings()
     .then((settings) => {
-      const { token } = settings;
+      const { server, token } = settings;
+
+      if (!server) {
+        console.log('Warning: server property is empty.');
+        return;
+      }
 
       if (!token) {
-        console.log('Warning: token is empty.');
+        console.log('Warning: token property is empty.');
         return;
       }
 
