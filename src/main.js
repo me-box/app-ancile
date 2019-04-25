@@ -4,7 +4,6 @@ const http = require('http');
 const express = require('express');
 const request = require('request');
 const bodyParser = require('body-parser');
-const path = require('path');
 
 // Ancile
 let AncileDefaultSettings = {};
@@ -198,7 +197,7 @@ function refresh_data() {
 
       // make the request
       request({
-        url: path.join(server, '/api/run'),
+        url: server + '/api/run',
         method: 'POST',
         json: data,
       }, (err, res, body) => {
