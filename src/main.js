@@ -73,24 +73,8 @@ app.get('/status', function (req, res) {
   res.send('active');
 });
 
-const tsc = databox.NewTimeSeriesBlobClient(DATABOX_ZMQ_ENDPOINT, false);
+//const tsc = databox.NewTimeSeriesBlobClient(DATABOX_ZMQ_ENDPOINT, false);
 const kvc = databox.NewKeyValueClient(DATABOX_ZMQ_ENDPOINT, false);
-
-// const balance = databox.NewDataSourceMetadata();
-// balance.Description = 'TrueLayer user Balance data';
-// balance.ContentType = 'application/json';
-// balance.Vendor = 'Databox Inc.';
-// balance.DataSourceType = 'truelayerUserBalance';
-// balance.DataSourceID = 'truelayerUserBalance';
-// balance.StoreType = 'ts';
-
-// const transactions = databox.NewDataSourceMetadata();
-// transactions.Description = 'TrueLayer user Transactions data';
-// transactions.ContentType = 'application/json';
-// transactions.Vendor = 'Databox Inc.';
-// transactions.DataSourceType = 'truelayerUserTransactions';
-// transactions.DataSourceID = 'truelayerUserTransactions';
-// transactions.StoreType = 'ts';
 
 const driverSettings = databox.NewDataSourceMetadata();
 driverSettings.Description = 'Ancile driver settings';
@@ -144,17 +128,17 @@ function setSettings(settings) {
   });
 }
 
-function save(datasourceid, data) {
-  console.log('Saving Ancile event::', data.text);
-  const json = { data };
-  tsc.Write(datasourceid, json)
-    .then((resp) => {
-      console.log('Save got response ', resp);
-    })
-    .catch((error) => {
-      console.log('Error writing to store:', error);
-    });
-}
+// function save(datasourceid, data) {
+//   console.log('Saving Ancile event::', data.text);
+//   const json = { data };
+//   tsc.Write(datasourceid, json)
+//     .then((resp) => {
+//       console.log('Save got response ', resp);
+//     })
+//     .catch((error) => {
+//       console.log('Error writing to store:', error);
+//     });
+// }
 
 
 function timer_callback() {
