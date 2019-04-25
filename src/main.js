@@ -187,11 +187,11 @@ function refresh_data() {
         users: ['minos.tmp@gmail.com'],
         purpose: 'research',
         program: `
-          dp_1 = user_specific["minos.tmp@gmail.com"].get_empty_data_pair(data_source='test')
-          test.test_transform(data=dp_1)
-          test.test_transform2(data=dp_1)
-          general.flatten(data=dp_1)
-          result.append_dp_data_to_result(data=dp_1)
+dp_1 = user_specific["minos.tmp@gmail.com"].get_empty_data_pair(data_source='test')
+test.test_transform(data=dp_1)
+test.test_transform2(data=dp_1)
+general.flatten(data=dp_1)
+result.append_dp_data_to_result(data=dp_1)
         `,
       };
 
