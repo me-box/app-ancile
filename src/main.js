@@ -11,6 +11,7 @@ try {
   AncileDefaultSettings = require('./ancile-secret.json');
 } catch (e) {
   AncileDefaultSettings = {
+    'server': '',
     'token': '',
   };
 }
@@ -31,12 +32,13 @@ let next_data_refresh = null;
 app.get('/ui', function (req, res) {
   getSettings()
     .then((settings) => {
-      const { token } = settings;
+      const { server, token } = settings;
 
       res.type('html');
       res.send(`
         <h1>Ancile Driver Configuration</h1>
         <form action="/driver-ancile/ui/saveConfiguration" >
+            Ancile Server: <input type="text" name="server" value="${server}" />
             Ancile Token: <input type="text" name="token" value="${token}" />
             <br />
             <button>Save Configuration</button>
@@ -49,7 +51,8 @@ app.get('/ui', function (req, res) {
 app.get('/ui/saveConfiguration', (req, res) => {
   getSettings()
     .then(async (settings) => {
-      const { token } = req.query;
+      const { server, token } = req.query;
+      settings.server = server;
       settings.token = token;
 
       setSettings(settings)
@@ -185,7 +188,7 @@ function timer_callback() {
 function refresh_data() {
   getSettings()
     .then((settings) => {
-      const { token } = settings;
+      const { server, token } = settings;
 
       console.log('[refresh_data]');
 
@@ -205,7 +208,7 @@ function refresh_data() {
 
       // make the request
       request({
-        url: 'http://127.0.0.1:5000/api/run',
+        url: path.join(server, '/api/run'),
         method: 'POST',
         json: data,
       }, (err, res, body) => {
