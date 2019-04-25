@@ -22,7 +22,7 @@
 	"external-whitelist": [
 		{
 			"urls": [
-				"http://127.0.0.1:5000"
+				"http://146.179.193.49:5000"
 			],
 			"description": "Access Ancile local server"
 		}
