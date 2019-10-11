@@ -32,6 +32,10 @@
 	},
 	"provides": [
 		{
+			"data-source-type": "redditData",
+			"description": "Reddit data",
+			"store-type": "tsblob",
+			"schema": {}
 		}
 	]
 }
