@@ -42,7 +42,7 @@ app.get('/ui', function (req, res) {
 
 app.get('/ui/getData', function (req, res) {
   getSettings()
-    .then((settings) => {
+    .then(async (settings) => {
       // const { } = settings;
       const { DataSourceID } = req.query;
 
@@ -52,9 +52,9 @@ app.get('/ui/getData', function (req, res) {
       }
 
       // read data
-      store.redditData.Read(DataSourceID).then((result) => {
+      store.TSBlob.Latest(DataSourceID).then((result) => {
         console.log('result:', DataSourceID, result);
-        res.send('index', { data: result.value });
+        res.send({ data: result.value });
       }).catch((err) => {
         console.log('get config error', err);
         return Promise.reject(new Error(err));
