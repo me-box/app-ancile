@@ -21,7 +21,7 @@ try {
 }
 
 const PORT = process.env.port || '8080';
-const store = databox.NewStoreClient(DATABOX_ZMQ_ENDPOINT, DATABOX_ARBITER_ENDPOINT);
+const store = databox.NewStoreClient(DATABOX_ZMQ_ENDPOINT, DATABOX_ARBITER_ENDPOINT, false);
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -54,6 +54,7 @@ app.get('/ui/getData', function (req, res) {
       // read data
       store.TSBlob.Latest(DataSourceID).then((result) => {
         console.log('result:', DataSourceID, result);
+        res.type('json');
         res.send({ data: result.value });
       }).catch((err) => {
         console.log('get config error', err);
@@ -88,14 +89,6 @@ app.get('/status', function (req, res) {
   res.send('active');
 });
 
-const redditData = databox.NewDataSourceMetadata();
-redditData.Description = 'Reddit Simulator data';
-redditData.ContentType = 'application/json';
-redditData.Vendor = 'Databox Inc.';
-redditData.DataSourceType = 'redditSimulatorData';
-redditData.DataSourceID = 'redditSimulatorData';
-redditData.StoreType = 'ts/blob';
-
 const driverSettings = databox.NewDataSourceMetadata();
 driverSettings.Description = 'Ancile driver settings';
 driverSettings.ContentType = 'application/json';
@@ -104,10 +97,7 @@ driverSettings.DataSourceType = 'ancileSettings';
 driverSettings.DataSourceID = 'ancileSettings';
 driverSettings.StoreType = 'kv';
 
-store.RegisterDatasource(redditData)
-  .then(() => {
-    return store.RegisterDatasource(driverSettings);
-  })
+store.RegisterDatasource(driverSettings)
   .catch((err) => {
     console.log('Error registering data source:' + err);
   });

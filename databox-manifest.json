@@ -19,23 +19,26 @@
 		"type": "git",
 		"url": "git+https://github.com/minoskt/driver-ancile.git"
 	},
-	"external-whitelist": [
+	"packages": [
 		{
-			"urls": [
-				"http://146.179.193.49:5000"
-			],
-			"description": "Access Ancile local server"
+			"name": "Reddit Data",
+			"purpose": "To connect DataBox with AncileCore",
+			"install": "required",
+			"risks": "TBD",
+			"benefits": "Use Ancile for polocy management.",
+			"datastores": [ "redditSimulatorData" ]
 		}
 	],
 	"resource-requirements": {
 		"store": "core-store"
 	},
-	"provides": [
+	"datasources": [
 		{
-			"data-source-type": "redditData",
-			"description": "Reddit data",
-			"store-type": "tsblob",
-			"schema": {}
+			"type": "redditSimulatorData",
+			"required": true,
+			"name": "redditSimulatorData",
+			"clientid": "redditSimulatorData",
+			"granularities": []
 		}
 	]
 }
