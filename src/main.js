@@ -33,11 +33,23 @@ app.get('/ui', function (req, res) {
   res.type('html');
   res.send(`
     <h1>Ancile App</h1>
-    <p>AncileCore should use the endpoint '/app-ancile/ui/getData' to read data written from an allowed driver.</p>
+
+    <p>AncileCore should use the supported endpoints to read data written from allowed drivers.</p>
+    <p>Supported endpoints for TSBlob datastores are:</p>
+
+    <ul>
+      <li>/app-ancile/ui/Latest</li>
+      <li>/app-ancile/ui/Earliest</li>
+      <li>/app-ancile/ui/LastN</li>
+      <li>/app-ancile/ui/FirstN</li>
+      <li>/app-ancile/ui/Since</li>
+      <li>/app-ancile/ui/Range</li>
+      <li>/app-ancile/ui/Length</li>
+    </ul>
   `);
 });
 
-app.get('/ui/getData', function (req, res) {
+app.get('/ui/Latest', function (req, res) {
   const { DataSourceID } = req.query;
 
   // Check if DataSourceID is available
@@ -59,6 +71,162 @@ app.get('/ui/getData', function (req, res) {
   });
 });
 
+app.get('/ui/Earliest', function (req, res) {
+  const { DataSourceID } = req.query;
+
+  // Check if DataSourceID is available
+  if (!DataSourceID) {
+    throw new Error('DataSourceID is missing');
+  }
+
+  // read data
+  store.TSBlob.Earliest(DataSourceID).then((result) => {
+    console.log('result:', DataSourceID, result);
+    res.type('json');
+    res.send({
+      DataSourceID,
+      data: result,
+    });
+  }).catch((err) => {
+    console.log('get config error', err);
+    throw new Error(err);
+  });
+});
+
+app.get('/ui/LastN', function (req, res) {
+  const { DataSourceID, n } = req.query;
+
+  // Check if DataSourceID is available
+  if (!DataSourceID) {
+    throw new Error('DataSourceID is missing');
+  }
+
+  // Check if n is available
+  if (!n) {
+    throw new Error('n is missing');
+  }
+
+  // read data
+  store.TSBlob.LastN(DataSourceID, n).then((result) => {
+    console.log('result:', DataSourceID, result);
+    res.type('json');
+    res.send({
+      DataSourceID,
+      n,
+      data: result,
+    });
+  }).catch((err) => {
+    console.log('get config error', err);
+    throw new Error(err);
+  });
+});
+
+app.get('/ui/FirstN', function (req, res) {
+  const { DataSourceID, n } = req.query;
+
+  // Check if DataSourceID is available
+  if (!DataSourceID) {
+    throw new Error('DataSourceID is missing');
+  }
+
+  // Check if n is available
+  if (!n) {
+    throw new Error('n is missing');
+  }
+
+  // read data
+  store.TSBlob.FirstN(DataSourceID, n).then((result) => {
+    console.log('result:', DataSourceID, result);
+    res.type('json');
+    res.send({
+      DataSourceID,
+      n,
+      data: result,
+    });
+  }).catch((err) => {
+    console.log('get config error', err);
+    throw new Error(err);
+  });
+});
+
+app.get('/ui/Since', function (req, res) {
+  const { DataSourceID, sinceTimeStamp } = req.query;
+
+  // Check if DataSourceID is available
+  if (!DataSourceID) {
+    throw new Error('DataSourceID is missing');
+  }
+
+  // Check if sinceTimeStamp is available
+  if (!sinceTimeStamp) {
+    throw new Error('n is missing');
+  }
+
+  // read data
+  store.TSBlob.Since(DataSourceID, sinceTimeStamp).then((result) => {
+    console.log('result:', DataSourceID, result);
+    res.type('json');
+    res.send({
+      DataSourceID,
+      sinceTimeStamp,
+      data: result,
+    });
+  }).catch((err) => {
+    console.log('get config error', err);
+    throw new Error(err);
+  });
+});
+
+app.get('/ui/Range', function (req, res) {
+  const { DataSourceID, fromTimeStamp, toTimeStamp } = req.query;
+
+  // Check if DataSourceID is available
+  if (!DataSourceID) {
+    throw new Error('DataSourceID is missing');
+  }
+
+  // Check if fromTimeStamp is available
+  if (!fromTimeStamp) {
+    throw new Error('fromTimeStamp is missing');
+  }
+
+  // Check if toTimeStamp is available
+  if (!toTimeStamp) {
+    throw new Error('toTimeStamp is missing');
+  }
+
+  // read data
+  store.TSBlob.Range(DataSourceID, fromTimeStamp, toTimeStamp).then((result) => {
+    console.log('result:', DataSourceID, result);
+    res.type('json');
+    res.send({
+      DataSourceID,
+      fromTimeStamp,
+      toTimeStamp,
+      data: result,
+    });
+  }).catch((err) => {
+    console.log('get config error', err);
+    throw new Error(err);
+  });
+});
+
+app.get('/ui/Length', function (req, res) {
+  const { DataSourceID } = req.query;
+
+  // read data
+  store.TSBlob.Length(DataSourceID).then((result) => {
+    console.log('result:', DataSourceID, result);
+    res.type('json');
+    res.send({
+      DataSourceID,
+      data: result,
+    });
+  }).catch((err) => {
+    console.log('get config error', err);
+    throw new Error(err);
+  });
+});
 
 app.get('/status', function (req, res) {
   res.send('active');
