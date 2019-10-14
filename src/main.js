@@ -46,7 +46,7 @@ app.get('/ui/getData', function (req, res) {
   }
 
   // read data
-  store.TSBlob.Last(DataSourceID).then((result) => {
+  store.TSBlob.Latest(DataSourceID).then((result) => {
     console.log('result:', DataSourceID, result);
     res.type('json');
     res.send({
