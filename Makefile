@@ -1,4 +1,4 @@
-IMAGE_NAME=driver-iBeacon-room-occupancy
+IMAGE_NAME=app-ancile
 DEFAULT_REG=databoxsystems
 VERSION=latest
 

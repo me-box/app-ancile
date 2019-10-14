@@ -1,11 +1,11 @@
 {
 	"manifest-version": 1,
-	"name": "driver-ancile",
+	"name": "app-ancile",
 	"version": "0.0.1",
-	"description": "A Databox driver to support Cornell Tech's Ancile Project",
+	"description": "A Databox app to support Cornell Tech's Ancile Project",
 	"author": "Kleomenis Katevas <k.katevas@imperial.ac.uk> ()",
 	"license": "MIT",
-	"databox-type": "driver",
+	"databox-type": "app",
 	"tags": [
 		"store",
 		"blob",
@@ -14,10 +14,10 @@
 		"json",
 		"timeseries"
 	],
-	"homepage": "https://github.com/minoskt/driver-ancile",
+	"homepage": "https://github.com/minoskt/app-ancile",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/minoskt/driver-ancile.git"
+		"url": "git+https://github.com/minoskt/app-ancile.git"
 	},
 	"packages": [
 		{
@@ -25,7 +25,7 @@
 			"purpose": "To connect DataBox with AncileCore",
 			"install": "required",
 			"risks": "TBD",
-			"benefits": "Use Ancile for polocy management.",
+			"benefits": "Use Ancile for policy management.",
 			"datastores": [ "redditSimulatorData" ]
 		}
 	],
