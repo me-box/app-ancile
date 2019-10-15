@@ -38,31 +38,31 @@ app.get('/ui', function (req, res) {
     <p>Supported endpoints for TSBlob datastores are:</p>
 
     <ul>
-      <li>/app-ancile/ui/Latest</li>
-      <li>/app-ancile/ui/Earliest</li>
-      <li>/app-ancile/ui/LastN</li>
-      <li>/app-ancile/ui/FirstN</li>
-      <li>/app-ancile/ui/Since</li>
-      <li>/app-ancile/ui/Range</li>
-      <li>/app-ancile/ui/Length</li>
+      <li>/app-ancile/ui/latest</li>
+      <li>/app-ancile/ui/earliest</li>
+      <li>/app-ancile/ui/last_n</li>
+      <li>/app-ancile/ui/first_n</li>
+      <li>/app-ancile/ui/since</li>
+      <li>/app-ancile/ui/range</li>
+      <li>/app-ancile/ui/length</li>
     </ul>
   `);
 });
 
-app.get('/ui/Latest', function (req, res) {
-  const { DataSourceID } = req.query;
+app.get('/ui/latest', function (req, res) {
+  const { data_source_id } = req.query;
 
-  // Check if DataSourceID is available
-  if (!DataSourceID) {
-    throw new Error('DataSourceID is missing');
+  // Check if datasource_id is available
+  if (!data_source_id) {
+    throw new Error('data_source_id is missing');
   }
 
   // read data
-  store.TSBlob.Latest(DataSourceID).then((result) => {
-    console.log('result:', DataSourceID, result);
+  store.TSBlob.Latest(data_source_id).then((result) => {
+    console.log('result:', data_source_id, result);
     res.type('json');
     res.send({
-      DataSourceID,
+      data_source_id,
       data: result,
     });
   }).catch((err) => {
@@ -71,20 +71,20 @@ app.get('/ui/Latest', function (req, res) {
   });
 });
 
-app.get('/ui/Earliest', function (req, res) {
-  const { DataSourceID } = req.query;
+app.get('/ui/earliest', function (req, res) {
+  const { data_source_id } = req.query;
 
-  // Check if DataSourceID is available
-  if (!DataSourceID) {
-    throw new Error('DataSourceID is missing');
+  // Check if data_source_id is available
+  if (!data_source_id) {
+    throw new Error('data_source_id is missing');
   }
 
   // read data
-  store.TSBlob.Earliest(DataSourceID).then((result) => {
-    console.log('result:', DataSourceID, result);
+  store.TSBlob.Earliest(data_source_id).then((result) => {
+    console.log('result:', data_source_id, result);
     res.type('json');
     res.send({
-      DataSourceID,
+      data_source_id,
       data: result,
     });
   }).catch((err) => {
@@ -93,12 +93,12 @@ app.get('/ui/Earliest', function (req, res) {
   });
 });
 
-app.get('/ui/LastN', function (req, res) {
-  const { DataSourceID, n } = req.query;
+app.get('/ui/last_n', function (req, res) {
+  const { data_source_id, n } = req.query;
 
-  // Check if DataSourceID is available
-  if (!DataSourceID) {
-    throw new Error('DataSourceID is missing');
+  // Check if data_source_id is available
+  if (!data_source_id) {
+    throw new Error('data_source_id is missing');
   }
 
   // Check if n is available
@@ -107,11 +107,11 @@ app.get('/ui/LastN', function (req, res) {
   }
 
   // read data
-  store.TSBlob.LastN(DataSourceID, n).then((result) => {
-    console.log('result:', DataSourceID, result);
+  store.TSBlob.LastN(data_source_id, n).then((result) => {
+    console.log('result:', data_source_id, result);
     res.type('json');
     res.send({
-      DataSourceID,
+      data_source_id,
       n,
       data: result,
     });
@@ -121,12 +121,12 @@ app.get('/ui/LastN', function (req, res) {
   });
 });
 
-app.get('/ui/FirstN', function (req, res) {
-  const { DataSourceID, n } = req.query;
+app.get('/ui/first_n', function (req, res) {
+  const { data_source_id, n } = req.query;
 
-  // Check if DataSourceID is available
-  if (!DataSourceID) {
-    throw new Error('DataSourceID is missing');
+  // Check if data_source_id is available
+  if (!data_source_id) {
+    throw new Error('data_source_id is missing');
   }
 
   // Check if n is available
@@ -135,11 +135,11 @@ app.get('/ui/FirstN', function (req, res) {
   }
 
   // read data
-  store.TSBlob.FirstN(DataSourceID, n).then((result) => {
-    console.log('result:', DataSourceID, result);
+  store.TSBlob.FirstN(data_source_id, n).then((result) => {
+    console.log('result:', data_source_id, result);
     res.type('json');
     res.send({
-      DataSourceID,
+      data_source_id,
       n,
       data: result,
     });
@@ -149,26 +149,26 @@ app.get('/ui/FirstN', function (req, res) {
   });
 });
 
-app.get('/ui/Since', function (req, res) {
-  const { DataSourceID, sinceTimeStamp } = req.query;
+app.get('/ui/since', function (req, res) {
+  const { data_source_id, since_timestamp } = req.query;
 
-  // Check if DataSourceID is available
-  if (!DataSourceID) {
-    throw new Error('DataSourceID is missing');
+  // Check if data_source_id is available
+  if (!data_source_id) {
+    throw new Error('data_source_id is missing');
   }
 
-  // Check if sinceTimeStamp is available
-  if (!sinceTimeStamp) {
+  // Check if since_timestamp is available
+  if (!since_timestamp) {
     throw new Error('n is missing');
   }
 
   // read data
-  store.TSBlob.Since(DataSourceID, sinceTimeStamp).then((result) => {
-    console.log('result:', DataSourceID, result);
+  store.TSBlob.Since(data_source_id, since_timestamp).then((result) => {
+    console.log('result:', data_source_id, result);
     res.type('json');
     res.send({
-      DataSourceID,
-      sinceTimeStamp,
+      data_source_id,
+      since_timestamp,
       data: result,
     });
   }).catch((err) => {
@@ -177,32 +177,32 @@ app.get('/ui/Since', function (req, res) {
   });
 });
 
-app.get('/ui/Range', function (req, res) {
-  const { DataSourceID, fromTimeStamp, toTimeStamp } = req.query;
+app.get('/ui/range', function (req, res) {
+  const { data_source_id, from_timestamp, to_timestamp } = req.query;
 
-  // Check if DataSourceID is available
-  if (!DataSourceID) {
-    throw new Error('DataSourceID is missing');
+  // Check if data_source_id is available
+  if (!data_source_id) {
+    throw new Error('data_source_id is missing');
   }
 
-  // Check if fromTimeStamp is available
-  if (!fromTimeStamp) {
-    throw new Error('fromTimeStamp is missing');
+  // Check if from_timestamp is available
+  if (!from_timestamp) {
+    throw new Error('from_timestamp is missing');
   }
 
-  // Check if toTimeStamp is available
-  if (!toTimeStamp) {
-    throw new Error('toTimeStamp is missing');
+  // Check if to_timestamp is available
+  if (!to_timestamp) {
+    throw new Error('to_timestamp is missing');
   }
 
   // read data
-  store.TSBlob.Range(DataSourceID, fromTimeStamp, toTimeStamp).then((result) => {
-    console.log('result:', DataSourceID, result);
+  store.TSBlob.Range(data_source_id, from_timestamp, to_timestamp).then((result) => {
+    console.log('result:', data_source_id, result);
     res.type('json');
     res.send({
-      DataSourceID,
-      fromTimeStamp,
-      toTimeStamp,
+      data_source_id,
+      from_timestamp,
+      to_timestamp,
       data: result,
     });
   }).catch((err) => {
@@ -211,15 +211,15 @@ app.get('/ui/Range', function (req, res) {
   });
 });
 
-app.get('/ui/Length', function (req, res) {
-  const { DataSourceID } = req.query;
+app.get('/ui/length', function (req, res) {
+  const { data_source_id } = req.query;
 
   // read data
-  store.TSBlob.Length(DataSourceID).then((result) => {
-    console.log('result:', DataSourceID, result);
+  store.TSBlob.Length(data_source_id).then((result) => {
+    console.log('result:', data_source_id, result);
     res.type('json');
     res.send({
-      DataSourceID,
+      data_source_id,
       data: result,
     });
   }).catch((err) => {
