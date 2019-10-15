@@ -18,3 +18,15 @@ Currently supported endpoints for TSBlob datastores are:
 - `/app-ancile/ui/length`
 
 In the future, we would like to port this app into Python and encapsulate AncileCore on it. AncileCore would then be able to communicate directly with the datastores and execute the policies locally.
+
+
+## Instructions
+
+First install and configure a driver that is supported in app-ancile (e.g. `driver-reddit-simulator`). Then install `app-ancile` into a locally running databox and allow access to the relevant data.
+
+Place all `ancile_functions\*.py` files into Ancile, under `ancile\lib`.
+
+Finally, try to run the following example Ancile policy:
+```
+TBD
+```
