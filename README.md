@@ -28,5 +28,14 @@ Place all `ancile_functions\*.py` files into Ancile, under `ancile\lib`.
 
 Finally, try to run the following example Ancile policy:
 ```
-TBD
+{
+    users: ['<a registered ancile user>'],
+    purpose: 'research',
+    program: `
+        dp_1 = databox.get_latest(data_source_id='redditSimulatorData')
+        test.test_transform(data=dp_1)
+        general.flatten(data=dp_1)
+        result.append_dp_data_to_result(data=dp_1)
+    `
+}
 ```
