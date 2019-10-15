@@ -6,10 +6,10 @@ name="databox"
 
 
 @ExternalDecorator()
-def get_latest(data_source_id):
+def get_tsblob_latest(data_source_id):
     import requests
 
-    url = "https://127.0.0.1/app-ancile/ui/latest"
+    url = "https://127.0.0.1/app-ancile/ui/tsblob/latest"
     payload = { "data_source_id": data_source_id }
     res = requests.get(url, params=payload)
     if res.status_code == 200:

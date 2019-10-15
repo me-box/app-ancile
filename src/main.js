@@ -38,18 +38,18 @@ app.get('/ui', function (req, res) {
     <p>Supported endpoints for TSBlob datastores are:</p>
 
     <ul>
-      <li>/app-ancile/ui/latest</li>
-      <li>/app-ancile/ui/earliest</li>
-      <li>/app-ancile/ui/last_n</li>
-      <li>/app-ancile/ui/first_n</li>
-      <li>/app-ancile/ui/since</li>
-      <li>/app-ancile/ui/range</li>
-      <li>/app-ancile/ui/length</li>
+      <li>/app-ancile/ui/tsblob/latest</li>
+      <li>/app-ancile/ui/tsblob/earliest</li>
+      <li>/app-ancile/ui/tsblob/last_n</li>
+      <li>/app-ancile/ui/tsblob/first_n</li>
+      <li>/app-ancile/ui/tsblob/since</li>
+      <li>/app-ancile/ui/tsblob/range</li>
+      <li>/app-ancile/ui/tsblob/length</li>
     </ul>
   `);
 });
 
-app.get('/ui/latest', function (req, res) {
+app.get('/ui/tsblob/latest', function (req, res) {
   const { data_source_id } = req.query;
 
   // Check if datasource_id is available
@@ -71,7 +71,7 @@ app.get('/ui/latest', function (req, res) {
   });
 });
 
-app.get('/ui/earliest', function (req, res) {
+app.get('/ui/tsblob/earliest', function (req, res) {
   const { data_source_id } = req.query;
 
   // Check if data_source_id is available
@@ -93,7 +93,7 @@ app.get('/ui/earliest', function (req, res) {
   });
 });
 
-app.get('/ui/last_n', function (req, res) {
+app.get('/ui/tsblob/last_n', function (req, res) {
   const { data_source_id, n } = req.query;
 
   // Check if data_source_id is available
@@ -121,7 +121,7 @@ app.get('/ui/last_n', function (req, res) {
   });
 });
 
-app.get('/ui/first_n', function (req, res) {
+app.get('/ui/tsblob/first_n', function (req, res) {
   const { data_source_id, n } = req.query;
 
   // Check if data_source_id is available
@@ -149,7 +149,7 @@ app.get('/ui/first_n', function (req, res) {
   });
 });
 
-app.get('/ui/since', function (req, res) {
+app.get('/ui/tsblob/since', function (req, res) {
   const { data_source_id, since_timestamp } = req.query;
 
   // Check if data_source_id is available
@@ -177,7 +177,7 @@ app.get('/ui/since', function (req, res) {
   });
 });
 
-app.get('/ui/range', function (req, res) {
+app.get('/ui/tsblob/range', function (req, res) {
   const { data_source_id, from_timestamp, to_timestamp } = req.query;
 
   // Check if data_source_id is available
@@ -211,7 +211,7 @@ app.get('/ui/range', function (req, res) {
   });
 });
 
-app.get('/ui/length', function (req, res) {
+app.get('/ui/tsblob/length', function (req, res) {
   const { data_source_id } = req.query;
 
   // read data
