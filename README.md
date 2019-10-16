@@ -32,7 +32,7 @@ Finally, try to run the following example Ancile policy:
     users: ['<a registered ancile user>'],
     purpose: 'research',
     program: `
-        dp_1 = databox.get_tsblob_latest(data_source_id='redditSimulatorData')
+        dp_1 = databox.get_latest_reddit_data()
         test.test_transform(data=dp_1)
         general.flatten(data=dp_1)
         result.append_dp_data_to_result(data=dp_1)

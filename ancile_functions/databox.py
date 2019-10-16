@@ -6,11 +6,11 @@ name="databox"
 
 
 @ExternalDecorator()
-def get_tsblob_latest(data_source_id):
+def get_latest_reddit_data():
     import requests
 
     url = "https://127.0.0.1/app-ancile/ui/tsblob/latest"
-    payload = { "data_source_id": data_source_id }
+    payload = { "data_source_id": "redditSimulatorData"}
     res = requests.get(url, params=payload)
     if res.status_code == 200:
         data = res.json()
