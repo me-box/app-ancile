@@ -47,7 +47,7 @@ Under `databox_dev`, run `$ ./databox-install-component driver-reddit-simulator 
 
 Start Databox again and go to: `My App -> App Store` and upload the two manifests (`databox-manifest.json`) from `driver-reddit-simulator` and `app-ancile` folders. The new driver and app will now appear in the App Store.
 
-Go to the App Store and install `driver-reddit-simulator`. 
+Go to the App Store and install `driver-reddit-simulator`. After succesfully installed, click at the `driver-reddit-simulator` to see the configuration page (`Reddit Simulator Driver Configuration`), and click at `Save Configuration` to load data from `_davros` account.
 
 Go to the App Store and install `app-ancile`.
 
