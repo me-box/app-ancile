@@ -5,13 +5,14 @@ from ancile.utils.errors import AncileException
 name="databox"
 
 
-@ExternalDecorator()
+# @ExternalDecorator()
 def get_latest_reddit_data():
     import requests
 
     url = "https://127.0.0.1/app-ancile/ui/tsblob/latest"
     payload = { "data_source_id": "redditSimulatorData"}
-    res = requests.get(url, params=payload)
+    headers = { "session": "SESSION"}
+    res = requests.get(url, cookies=headers, params=payload, verify=False)
     if res.status_code == 200:
         data = res.json()
     else:
