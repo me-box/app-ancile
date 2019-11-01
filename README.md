@@ -67,8 +67,8 @@ Finally, try to run the following example Ancile policy:
     users: ['<a registered ancile user>'],
     purpose: 'research',
     program: `
-        dp_1 = databox.get_latest_reddit_data()
-        result.append_dp_data_to_result(data=dp_1)
+        dp_1 = databox.get_latest_reddit_data(<session key>)
+        return_to_app(data=dp_1)
     `
 }
 ```
