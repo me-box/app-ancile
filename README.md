@@ -1,13 +1,13 @@
 # app-ancile
 
-A Databox app to support Cornell Tech's Ancile Project
+A Databox app to support Cornell Tech's [Ancile Project](https://github.com/ancile-project/ancile).
 
 
 ## Description
 
 This app initially started as a proof of concept to check if Ancile and Databox can communicate (check old commits until 25 April 2019 where we have a test Ancile policy being executed repetitively; i.e. per second).
 
-In the current version of this app we assume that AncileApp is installed outside Databox platform but can be accessed through `localhost`, mainly because of limited support for Databox Python (required as Ancile policies are also written in Python). Ancile-app now works as a bridge to the driver data, having access to all data that Ancile could be interested in. It opens endpoints that AncileCore can use to fetch data and execute the equivalent policy on them (e.g. a transformation or data minimization). In that way, we replace Databox datastore permission system (i.e. declare data providers in the manifest) and use AncileCore as a coordinator.
+In the current version of this app we assume that Ancile is installed outside Databox platform but can be accessed through `localhost`, mainly because of limited support for Databox Python (required as Ancile policies are also written in Python). Ancile-app now works as a bridge to the driver data, having access to all data that Ancile could be interested in. It opens endpoints that AncileCore can use to fetch data and execute the equivalent policy on them (e.g. a transformation or data minimization). In that way, we replace Databox datastore permission system (i.e. declare data providers in the manifest) and use AncileCore as a coordinator.
 
 Currently supported endpoints for TSBlob datastores are:
 - `/app-ancile/ui/tsblob/latest`
@@ -57,7 +57,7 @@ Test that reddit data can be retrieved when visiting https://127.0.0.1/app-ancil
 
 ## Ancile Instructions
 
-Install and configure Ancile into the local machine.
+Install and configure [Ancile](https://github.com/ancile-project/ancile) into the local machine.
 
 Place all `ancile_functions\*.py` files into Ancile, under `ancile\lib`.
 
