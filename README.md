@@ -72,3 +72,22 @@ Finally, try to run the following example Ancile policy:
     `
 }
 ```
+
+
+## Install a custom driver / app in Databox
+
+1. Copy the driver-or-app folder inside `databox\build`
+2. `./databox-install-component driver-or-app-name databoxsystems 0.5.2`
+3. Start Databox (see below)
+4. Login to Databox (`127.0.0.1`)
+5. Goto My App > App Store and upload the manifest (from `databox\build\driver-or-app-name`)
+6. Goto App Store and install the driver.
+
+Debug:
+`docker service logs driver-or-app-name`
+
+Start Databox:
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock --network host -t databoxsystems/databox:0.5.2 /databox start -sslHostName $(hostname)`
+
+Stop Databox:
+`docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -t databoxsystems/databox:0.5.2 /databox stop`
